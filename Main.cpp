@@ -516,7 +516,7 @@ public:
 			iTJSDispatch2 *arr = TJSCreateArrayObject();
 			*r = tTJSVariant(arr, arr);
 			arr->Release();
-			if (!::EnumResourceTypesW(handle_, EnumTypesProc, (LONG_PTR)arr)) {
+			if (!::EnumResourceTypesW(handle_, (ENUMRESTYPEPROCW)EnumTypesProc, (LONG_PTR)arr)) {
 				ThrowLastError(TJS_W("EnumResourceTypes: %1"));
 			}
 		}
@@ -533,7 +533,7 @@ public:
 
 			LPCWSTR lpType, lpName;
 			if (getResTypeAndName(type, NULL, lpType, lpName)) {
-				if (!::EnumResourceNamesW(handle_, lpType, EnumNamesProc, (LONG_PTR)arr)) {
+				if (!::EnumResourceNamesW(handle_, lpType, (ENUMRESNAMEPROCW)EnumNamesProc, (LONG_PTR)arr)) {
 					ThrowLastError(TJS_W("EnumResourceNames: %1"));
 				}
 			}
@@ -551,7 +551,7 @@ public:
 
 			LPCWSTR lpType, lpName;
 			if (getResTypeAndName(type, name, lpType, lpName)) {
-				if (!::EnumResourceLanguagesW(handle_, lpType, lpName, EnumLangsProc, (LONG_PTR)arr)) {
+				if (!::EnumResourceLanguagesW(handle_, lpType, lpName, (ENUMRESLANGPROCW)EnumLangsProc, (LONG_PTR)arr)) {
 					ThrowLastError(TJS_W("EnumResourceLanguages: %1"));
 				}
 			}
