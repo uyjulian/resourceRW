@@ -1,7 +1,7 @@
 
-SOURCES += ../00_simplebinder/v2link.cpp Main.cpp
+SOURCES += external/00_simplebinder/v2link.cpp Main.cpp
 
-INCFLAGS += -I../00_simplebinder
+INCFLAGS += -Iexternal/00_simplebinder
 
 PROJECT_BASENAME = resourceRW
 
