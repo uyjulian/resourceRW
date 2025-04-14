@@ -491,7 +491,7 @@ public:
 	 */
 	tjs_error open(tTJSVariant *r, tTJSVariant *filename, tjs_int optnum, tTJSVariant **optargs) {
 		open_(*filename, optnum>0 && optargs[0]->operator bool());
-		if (r) *r = (tjs_int)handle_;
+		if (r) *r = (tTVInteger)(tjs_intptr_t)handle_;
 		return TJS_S_OK;
 	}
 	/**
@@ -770,7 +770,7 @@ public:
 	 */
 	tjs_error open(tTJSVariant *r, tTJSVariant *filename) {
 		open_(*filename);
-		if (r) *r = (tjs_int)handle_;
+		if (r) *r = (tTVInteger)(tjs_intptr_t)handle_;
 		return TJS_S_OK;
 	}
 	/**
