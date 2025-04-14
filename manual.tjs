@@ -119,6 +119,44 @@ class ResourceWriter {
 	function writeFromOctet(type, name, oct);
 }
 
+class ResourceIconImage {
+	function fromOctet(resoct);
+	function toOctet();
+
+	function getID(index);
+	function setID(index, id);
+
+	function getImage(index);
+	function setImage(index, imgoct);
+
+	function getHotSpot(index);
+	function setHotSpot(index, ox, oy);
+
+	property count { getter; }
+	property isCursor { getter; setter; }
+}
+class ResourceIconGroup {
+	function fromIcon(iconimg);
+	function toIcon();
+	function fromOctet(resoct);
+	function toOctet();
+}
+
+class ResourceVersionInfo {
+	function ResourceVersionInfo(langid=void);
+
+	function changeString(key, value, langid);
+	function changeInfo(key, val);
+
+	function getLangList();
+	function addLang(langid);
+	function removeLang(langid);
+	function copyLang(srcid, dstid);
+
+	function fromOctet(resoct);
+	function toOctet();
+}
+
 /**
  * リソースタイプ定数
  */

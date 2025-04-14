@@ -19,9 +19,7 @@ manual.tjs参照
 
 ●コンパイル
 
-vs2005
-vs2008
-等のプロジェクトを使用してください。
+premake5 vs20xx にてプロジェクトを作成しててください。
 
 コンパイルには ../tp_stub.* および ../00_simplebilder フォルダ内の
 ファイルも必要です。
@@ -33,9 +31,7 @@ readme.txt	このファイル
 Main.cpp	プラグイン本体ソース
 lang.inc	LANG_/SUBLANG_登録用マクロ
 manual.tjs	擬似コードによるマニュアル
-premake4.lua	premake4のプロジェクト生成用定義ファイル
-vs20??/		各VS用プロジェクト
-gmake/		gcc用プロジェクト
+premake5.lua	premake4のプロジェクト生成用定義ファイル
 
 
 ●その他注意事項
