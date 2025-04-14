@@ -1,6 +1,7 @@
 #pragma once
 
 #include <windows.h>
+#include <algorithm>
 #include "tp_stub.h"
 #include "simplebinder.hpp"
 
