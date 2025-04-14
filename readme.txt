@@ -1,61 +1,61 @@
-TITLE: ƒŠƒ\[ƒX‘€ìƒvƒ‰ƒOƒCƒ“(experimental)
+TITLE: ãƒªã‚½ãƒ¼ã‚¹æ“ä½œãƒ—ãƒ©ã‚°ã‚¤ãƒ³(experimental)
 AUTHOR: miahmie
 
-œ‚±‚ê‚Í‚È‚ÉH
+â—ã“ã‚Œã¯ãªã«ï¼Ÿ
 
-EXE‚âDLLƒtƒ@ƒCƒ‹‚ÌƒŠƒ\[ƒX‚ð‘€ì‚·‚éƒvƒ‰ƒOƒCƒ“‚Å‚·B
+EXEã‚„DLLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’æ“ä½œã™ã‚‹ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã§ã™ã€‚
 
-¦‚Ü‚¾\•ª‚É“®ìŠm”F‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI
-
-
-–{ƒvƒ‰ƒOƒCƒ“‚Í simplebinder.hpp ‚ÌŽg—pƒTƒ“ƒvƒ‹‚Å‚·B
-simplebinder.hpp ‚É‚Â‚¢‚Ä‚ÍC../00_simplebilder ‚Ìƒtƒ@ƒCƒ‹‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B
+â€»ã¾ã ååˆ†ã«å‹•ä½œç¢ºèªã•ã‚Œã¦ã„ã¾ã›ã‚“ï¼
 
 
-œŽg‚¢•û
-
-manual.tjsŽQÆ
-
-
-œƒRƒ“ƒpƒCƒ‹
-
-premake5 vs20xx ‚É‚ÄƒvƒƒWƒFƒNƒg‚ðì¬‚µ‚Ä‚Ä‚­‚¾‚³‚¢B
-
-ƒRƒ“ƒpƒCƒ‹‚É‚Í ../tp_stub.* ‚¨‚æ‚Ñ ../00_simplebilder ƒtƒHƒ‹ƒ_“à‚Ì
-ƒtƒ@ƒCƒ‹‚à•K—v‚Å‚·B
+æœ¬ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¯ simplebinder.hpp ã®ä½¿ç”¨ã‚µãƒ³ãƒ—ãƒ«ã§ã™ã€‚
+simplebinder.hpp ã«ã¤ã„ã¦ã¯ï¼Œ../00_simplebilder ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚
 
 
-œƒtƒ@ƒCƒ‹‚É‚Â‚¢‚Ä
+â—ä½¿ã„æ–¹
 
-readme.txt	‚±‚Ìƒtƒ@ƒCƒ‹
-Main.cpp	ƒvƒ‰ƒOƒCƒ“–{‘Ìƒ\[ƒX
-lang.inc	LANG_/SUBLANG_“o˜^—pƒ}ƒNƒ
-manual.tjs	‹[Ž—ƒR[ƒh‚É‚æ‚éƒ}ƒjƒ…ƒAƒ‹
-premake5.lua	premake4‚ÌƒvƒƒWƒFƒNƒg¶¬—p’è‹`ƒtƒ@ƒCƒ‹
+manual.tjså‚ç…§
 
 
-œ‚»‚Ì‘¼’ˆÓŽ–€
+â—ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«
 
-E‚Æ‚è‚ ‚¦‚¸‘‚«‹N‚±‚µ‚½‚¾‚¯‚È‚Ì‚ÅC“®ìŠm”F‚ª•s\•ª‚Å‚·B
-EResorceWriter‚ÅƒŠƒ\[ƒX‚ð‘‚«Š·‚¦‚é‚ÆƒŠƒ\[ƒXƒf[ƒ^‚ÌŒ„ŠÔ‚ÉPADDINGXX‚Æ‚¢‚Á‚½
-@ƒpƒfƒBƒ“ƒO‚ð–„‚ß‚é•¶Žš—ñ‚ª‘‚«‰Á‚í‚éê‡‚ª‚ ‚è‚Ü‚·iUpdateResource‚ÌŽd—lHj
-„¦‚±‚Ì‚¹‚¢‚Åver1.2ˆÈ‰º‚Ì‹g—¢‹g—¢Z‚ÌƒŠƒ\[ƒX‚ð‘‚«Š·‚¦‚é‚Æ
-@-about‚Ìƒ_ƒCƒAƒƒO‚ð•\Ž¦‚µ‚½‚èTVPGetAboutString()‚ðŒÄ‚Ôƒvƒ‰ƒOƒCƒ“‚ðŽg—p‚·‚é‚Æ
-@AccessVioration‚Å—Ž‚¿‚é–â‘è‚ª”­¶‚·‚é‚Æ‚¢‚¤ƒoƒO‚ª‚ ‚è‚Ü‚·
-@i‹g—¢‹g—¢ZÅV”Å‚Å‚Íd0b979a‚É‚ÄC³Ï‚Ýj
-E•¶Žš—ñ‚Å‚È‚¢ƒŠƒ\[ƒX‚É‘Î‚µ‚ÄResourceReader.readToText‚È‚Ç‚µ‚È‚¢‚Å‚­‚¾‚³‚¢
-EMessageTable‚ÌƒŠƒ\[ƒX‚ð“Ç‚Ý‘‚«‚·‚éê‡‚ÍŽ©‘O‚Ìƒp[ƒT“™‚ðì‚é•K—v‚ª‚ ‚è‚Ü‚·
-@BinaryStream.dll‚â‹g—¢‹g—¢Z‚ÌTJS‚ÌArray.pack/Octet.unpack‚È‚Ç‚ð—˜—p‚µC
-@WinNT.h‚È‚Ç‚É’è‹`‚³‚ê‚Ä‚¢‚é
+premake5 vs20xx ã«ã¦ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã—ã¦ã¦ãã ã•ã„ã€‚
+
+ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«ã¯ ../tp_stub.* ãŠã‚ˆã³ ../00_simplebilder ãƒ•ã‚©ãƒ«ãƒ€å†…ã®
+ãƒ•ã‚¡ã‚¤ãƒ«ã‚‚å¿…è¦ã§ã™ã€‚
+
+
+â—ãƒ•ã‚¡ã‚¤ãƒ«ã«ã¤ã„ã¦
+
+readme.txt	ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«
+Main.cpp	ãƒ—ãƒ©ã‚°ã‚¤ãƒ³æœ¬ä½“ã‚½ãƒ¼ã‚¹
+lang.inc	LANG_/SUBLANG_ç™»éŒ²ç”¨ãƒžã‚¯ãƒ­
+manual.tjs	æ“¬ä¼¼ã‚³ãƒ¼ãƒ‰ã«ã‚ˆã‚‹ãƒžãƒ‹ãƒ¥ã‚¢ãƒ«
+premake5.lua	premake4ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆç”¨å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«
+
+
+â—ãã®ä»–æ³¨æ„äº‹é …
+
+ãƒ»ã¨ã‚Šã‚ãˆãšæ›¸ãèµ·ã“ã—ãŸã ã‘ãªã®ã§ï¼Œå‹•ä½œç¢ºèªãŒä¸ååˆ†ã§ã™ã€‚
+ãƒ»ResorceWriterã§ãƒªã‚½ãƒ¼ã‚¹ã‚’æ›¸ãæ›ãˆã‚‹ã¨ãƒªã‚½ãƒ¼ã‚¹ãƒ‡ãƒ¼ã‚¿ã®éš™é–“ã«PADDINGXXã¨ã„ã£ãŸ
+ã€€ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’åŸ‹ã‚ã‚‹æ–‡å­—åˆ—ãŒæ›¸ãåŠ ã‚ã‚‹å ´åˆãŒã‚ã‚Šã¾ã™ï¼ˆUpdateResourceã®ä»•æ§˜ï¼Ÿï¼‰
+ï¼žâ€»ã“ã®ã›ã„ã§ver1.2ä»¥ä¸‹ã®å‰é‡Œå‰é‡ŒZã®ãƒªã‚½ãƒ¼ã‚¹ã‚’æ›¸ãæ›ãˆã‚‹ã¨
+ã€€-aboutã®ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ãŸã‚ŠTVPGetAboutString()ã‚’å‘¼ã¶ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹ã¨
+ã€€AccessViorationã§è½ã¡ã‚‹å•é¡ŒãŒç™ºç”Ÿã™ã‚‹ã¨ã„ã†ãƒã‚°ãŒã‚ã‚Šã¾ã™
+ã€€ï¼ˆå‰é‡Œå‰é‡ŒZæœ€æ–°ç‰ˆã§ã¯d0b979aã«ã¦ä¿®æ­£æ¸ˆã¿ï¼‰
+ãƒ»æ–‡å­—åˆ—ã§ãªã„ãƒªã‚½ãƒ¼ã‚¹ã«å¯¾ã—ã¦ResourceReader.readToTextãªã©ã—ãªã„ã§ãã ã•ã„
+ãƒ»MessageTableã®ãƒªã‚½ãƒ¼ã‚¹ã‚’èª­ã¿æ›¸ãã™ã‚‹å ´åˆã¯è‡ªå‰ã®ãƒ‘ãƒ¼ã‚µç­‰ã‚’ä½œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™
+ã€€BinaryStream.dllã‚„å‰é‡Œå‰é‡ŒZã®TJSã®Array.pack/Octet.unpackãªã©ã‚’åˆ©ç”¨ã—ï¼Œ
+ã€€WinNT.hãªã©ã«å®šç¾©ã•ã‚Œã¦ã„ã‚‹
 	MESSAGE_RESOURCE_DATA
 	MESSAGE_RESOURCE_BLOCK
 	MESSAGE_RESOURCE_ENTRY
-@‚Ìtypedef/struct‚ÌƒtƒH[ƒ}ƒbƒg‚ðŽ©‘O‚Å“Ç‚Ý‘‚«‚µ‚Ä‚­‚¾‚³‚¢B
-@ŽQlGhttp://www.codeproject.com/Articles/14444/Enumerating-Message-Table-Contents
-EƒAƒCƒRƒ“‚Í rtIcon,rtGroupIconƒŠƒ\[ƒX‚ð‚ð“KØ‚ÉÝ’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·
-@ŽQlGhttp://www.codeproject.com/Articles/30644/Replacing-ICON-resources-in-EXE-and-DLL-files
+ã€€ã®typedef/structã®ãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆã‚’è‡ªå‰ã§èª­ã¿æ›¸ãã—ã¦ãã ã•ã„ã€‚
+ã€€å‚è€ƒï¼›http://www.codeproject.com/Articles/14444/Enumerating-Message-Table-Contents
+ãƒ»ã‚¢ã‚¤ã‚³ãƒ³ã¯ rtIcon,rtGroupIconãƒªã‚½ãƒ¼ã‚¹ã‚’ã‚’é©åˆ‡ã«è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™
+ã€€å‚è€ƒï¼›http://www.codeproject.com/Articles/30644/Replacing-ICON-resources-in-EXE-and-DLL-files
 
-œƒ‰ƒCƒZƒ“ƒX
+â—ãƒ©ã‚¤ã‚»ãƒ³ã‚¹
 
-‚±‚Ìƒvƒ‰ƒOƒCƒ“‚Ìƒ‰ƒCƒZƒ“ƒX‚Í‹g—¢‹g—¢‚Q^‹g—¢‹g—¢‚y‚É€‹’‚µ‚Ä‚­‚¾‚³‚¢B
+ã“ã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã¯å‰é‡Œå‰é‡Œï¼’ï¼å‰é‡Œå‰é‡Œï¼ºã«æº–æ‹ ã—ã¦ãã ã•ã„ã€‚
 

@@ -30,13 +30,13 @@ template<class T>
 struct ChildList : public std::list<T> {};
 #endif
 
-// ˆ—”ÍˆÍ
+// å‡¦ç†ç¯„å›²
 struct VsRange {
 	size_t begin, end;
 };
 
 //--------------------------------------------------------------
-// ƒe[ƒuƒ‹“Ç‚İ‘‚«‘€ì
+// ãƒ†ãƒ¼ãƒ–ãƒ«èª­ã¿æ›¸ãæ“ä½œ
 struct BlobReader {
 	BlobReader(const BYTE *src) : src(src) {}
 	bool alignment(VsRange &range) const {
@@ -93,7 +93,7 @@ struct BlobWriter {
 	std::vector<T> &data;
 };
 //--------------------------------------------------------------
-// VS’lEƒe[ƒuƒ‹‹¤’Ê•”E‘€ìƒ†[ƒeƒBƒŠƒeƒB
+// VSå€¤ãƒ»ãƒ†ãƒ¼ãƒ–ãƒ«å…±é€šéƒ¨ãƒ»æ“ä½œãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 /*
 struct NonCopyable {
@@ -235,7 +235,7 @@ struct VsBase { //: protected NonCopyable {
 };
 
 //--------------------------------------------------------------
-// \StringFileInfo\{LANGCODEPAGE}\Value’l
+// \StringFileInfo\{LANGCODEPAGE}\Valueå€¤
 struct String : public VsBase {
 //	WORD  Value;
 	u16string Value;      // A zero-terminated string.
@@ -263,7 +263,7 @@ struct String : public VsBase {
 	void save(T &blob, bool update) {
 		LengthFiller<T> fill(*this, blob, update);
 		if (update) {
-			wValueLength = (Value.length() + 1); // [MEMO] byte”‚Å‚Í‚È‚­•¶š”(\0ŠÜ‚ß‚é)
+			wValueLength = (Value.length() + 1); // [MEMO] byteæ•°ã§ã¯ãªãæ–‡å­—æ•°(\0å«ã‚ã‚‹)
 //			wType = 1; // type:str
 		}
 		VsBase::save(blob);
@@ -271,7 +271,7 @@ struct String : public VsBase {
 	}
 };
 //--------------------------------------------------------------
-// \StringFileInfo\{LANGCODEPAGE} ƒe[ƒuƒ‹
+// \StringFileInfo\{LANGCODEPAGE} ãƒ†ãƒ¼ãƒ–ãƒ«
 struct StringTable : public VsBase {
 	ChildList<String> Children; // An array of one or more String structures.
 
@@ -346,13 +346,13 @@ struct Var : public VsBase {
 
 	bool addnew(DWORD lang) {
 		auto it = std::find(Value.cbegin(), Value.cend(), lang);
-		if (it != Value.cend()) return false; // Šù‚É‘¶İ‚·‚é
+		if (it != Value.cend()) return false; // æ—¢ã«å­˜åœ¨ã™ã‚‹
 		Value.push_back(lang);
 		return true;
 	}
 	bool remove(DWORD lang) {
 		auto it = std::find(Value.begin(), Value.end(), lang);
-		if (it == Value.end()) return false; // íœ‘ÎÛ‚ª–³‚¢
+		if (it == Value.end()) return false; // å‰Šé™¤å¯¾è±¡ãŒç„¡ã„
 		Value.erase(it);
 		return true;
 	}
@@ -370,7 +370,7 @@ struct Var : public VsBase {
 			if (!blob.copy(&Value.front(), pos, valpos)) return -1;
 			for (auto it = Value.begin(); it != Value.end(); ++it) {
 				const DWORD val = *it;
-				*it = ((val << 16) | (val >> 16)); // [XXX] WORD Swapping / ’¼ƒRƒs[‚¾‚ÆƒGƒ“ƒfƒBƒAƒ“‚ÌŠÖŒW‚ÅWORD‡‚ª‹t‚É‚È‚é‚½‚ß
+				*it = ((val << 16) | (val >> 16)); // [XXX] WORD Swapping / ç›´ã‚³ãƒ”ãƒ¼ã ã¨ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã®é–¢ä¿‚ã§WORDé †ãŒé€†ã«ãªã‚‹ãŸã‚
 			}
 			valpos.begin = pos.end;
 		}
@@ -395,7 +395,7 @@ struct Var : public VsBase {
 	}
 };
 //--------------------------------------------------------------
-// \StringFileInfo | \VarFileInfo ƒe[ƒuƒ‹
+// \StringFileInfo | \VarFileInfo ãƒ†ãƒ¼ãƒ–ãƒ«
 struct FileInfo : public VsBase {
 	int childrenType;
 	ChildList<StringTable> StringChildren; // An array of one or more StringTable structures. Each StringTable structure's szKey member indicates the appropriate language and code page for displaying the text in that StringTable structure.
@@ -440,17 +440,17 @@ struct FileInfo : public VsBase {
 			auto srctbl = srclang ? FindChildrenIC(StringChildren, ToHexString(*srclang, srchex)) : term;
 			auto dsttbl = dstlang ? FindChildrenIC(StringChildren, ToHexString(*dstlang, dsthex)) : term;
 			if (addnew) {
-				if (dsttbl == term) return false; // ’Ç‰Áæ‚ªŠù‚É‘¶İ‚·‚é
+				if (dsttbl == term) return false; // è¿½åŠ å…ˆãŒæ—¢ã«å­˜åœ¨ã™ã‚‹
 				StringChildren.push_back(StringTable());
 				StringChildren.back().reset(*dstlang);
 				return true;
 			} else if (remove) {
-				if (srctbl == term) return false; // íœæ‚ª–³‚¢
+				if (srctbl == term) return false; // å‰Šé™¤å…ˆãŒç„¡ã„
 				StringChildren.erase(srctbl);
 				return true;
 			} else {
-				if (srctbl == term) return false; // ƒRƒs[Œ³‚ª–³‚¢
-				if (dsttbl != term) return false; // ƒRƒs[æ‚ªŠù‚É‘¶İ‚·‚é
+				if (srctbl == term) return false; // ã‚³ãƒ”ãƒ¼å…ƒãŒç„¡ã„
+				if (dsttbl != term) return false; // ã‚³ãƒ”ãƒ¼å…ˆãŒæ—¢ã«å­˜åœ¨ã™ã‚‹
 				StringChildren.push_back(*srctbl);
 				StringChildren.back().changeLang(*dstlang);
 				return true;
@@ -459,7 +459,7 @@ struct FileInfo : public VsBase {
 			Var *var = FindChildren(VarChildren, U16TEXT("Translation"));
 			if (!var) return false;
 			if (remove) return var->remove(*srclang);
-			else        return var->addnew(*dstlang); // ƒRƒs[‚Íadd‚Æ“¯‚¶‹““®
+			else        return var->addnew(*dstlang); // ã‚³ãƒ”ãƒ¼ã¯addã¨åŒã˜æŒ™å‹•
 		}
 		return false;
 	}
@@ -493,7 +493,7 @@ struct FileInfo : public VsBase {
 	}
 };
 //--------------------------------------------------------------
-// VS_VERSION_INFO ƒe[ƒuƒ‹
+// VS_VERSION_INFO ãƒ†ãƒ¼ãƒ–ãƒ«
 struct VersionInfo : public VsBase {
 	struct VS_FIXEDFILEINFO {
 		DWORD dwSignature;
@@ -524,7 +524,7 @@ struct VersionInfo : public VsBase {
 		szKey = U16TEXT("VS_VERSION_INFO");
 		Value.dwSignature = 0xFEEF04BD;
 		Value.dwFileFlagsMask = 0x3F;
-		Value.dwFileFlags     = 0x10; // VS_FF_INFOINFERRED [ƒtƒ@ƒCƒ‹‚Ìƒo[ƒWƒ‡ƒ“\‘¢‚Í“®“I‚Éì¬‚³‚ê‚Ü‚µ‚½B‚µ‚½‚ª‚Á‚ÄA‚±‚Ì\‘¢‘Ì‚Ìˆê•”‚Ìƒƒ“ƒo[‚Í‹ó‚Å‚ ‚é‚©A³‚µ‚­‚È‚¢‰Â”\«‚ª‚ ‚è‚Ü‚·B]
+		Value.dwFileFlags     = 0x10; // VS_FF_INFOINFERRED [ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ§‹é€ ã¯å‹•çš„ã«ä½œæˆã•ã‚Œã¾ã—ãŸã€‚ã—ãŸãŒã£ã¦ã€ã“ã®æ§‹é€ ä½“ã®ä¸€éƒ¨ã®ãƒ¡ãƒ³ãƒãƒ¼ã¯ç©ºã§ã‚ã‚‹ã‹ã€æ­£ã—ããªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚]
 		Value.dwFileOS        = 0x40004L; // VOS_NT | VOS_WINDOWS32
 		Children.push_back(FileInfo());
 		Children.push_back(FileInfo());
@@ -544,10 +544,10 @@ struct VersionInfo : public VsBase {
 			if (!rstr) return false;
 			const bool rvar = var->changeTranslation(srclang, dstlang);
 			if (!rvar) {
-				if (dstlang) str->changeTranslation(dstlang, 0); // ’Ç‰ÁÏ‚İ‚Ìê‡‚Ííœ
+				if (dstlang) str->changeTranslation(dstlang, 0); // è¿½åŠ æ¸ˆã¿ã®å ´åˆã¯å‰Šé™¤
 				return false;
 			}
-			// V‹K’Ç‰Á‚É VS_FF_INFOINFERRED ƒtƒ‰ƒO‚ğ—§‚Ä‚é
+			// æ–°è¦è¿½åŠ æ™‚ã« VS_FF_INFOINFERRED ãƒ•ãƒ©ã‚°ã‚’ç«‹ã¦ã‚‹
 			if (!srclang && dstlang) {
 				Value.dwFileFlagsMask |= 0x10;
 				Value.dwFileFlags     |= 0x10;
@@ -607,7 +607,7 @@ struct VersionInfo : public VsBase {
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-// publicƒNƒ‰ƒX
+// publicã‚¯ãƒ©ã‚¹
 
 class VersionContainer {
 	VersionInfo info_;
