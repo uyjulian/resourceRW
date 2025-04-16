@@ -1,6 +1,7 @@
 #pragma once
 
 #include <windows.h>
+#include <algorithm>
 #include "tp_stub.h"
 #include "simplebinder.hpp"
 
@@ -103,23 +104,23 @@ public:
 	static bool Entry(bool link) {
 		if (!SetupLangIdTable(link)) return true; // already link/unlinked.
 		return (SimpleBinder::BindUtil(link)
-				.Variant(TJS_W("rtAccelerator"), (tjs_int)RT_ACCELERATOR)
-				.Variant(TJS_W("rtAniCursor"), (tjs_int)RT_ANICURSOR)
-				.Variant(TJS_W("rtAniIcon"), (tjs_int)RT_ANIICON)
-				.Variant(TJS_W("rtBitmap"), (tjs_int)RT_BITMAP)
-				.Variant(TJS_W("rtCursor"), (tjs_int)RT_CURSOR)
-				.Variant(TJS_W("rtDialog"), (tjs_int)RT_DIALOG)
-				.Variant(TJS_W("rtFont"), (tjs_int)RT_FONT)
-				.Variant(TJS_W("rtFontDir"), (tjs_int)RT_FONTDIR)
-				.Variant(TJS_W("rtGroupCursor"), (tjs_int)RT_GROUP_CURSOR)
-				.Variant(TJS_W("rtGroupIcon"), (tjs_int)RT_GROUP_ICON)
-				.Variant(TJS_W("rtHtml"), (tjs_int)RT_HTML)
-				.Variant(TJS_W("rtIcon"), (tjs_int)RT_ICON)
-				.Variant(TJS_W("rtMenu"), (tjs_int)RT_MENU)
-				.Variant(TJS_W("rtMessageTable"), (tjs_int)RT_MESSAGETABLE)
-				.Variant(TJS_W("rtRcData"), (tjs_int)RT_RCDATA)
-				.Variant(TJS_W("rtString"), (tjs_int)RT_STRING)
-				.Variant(TJS_W("rtVersion"), (tjs_int)RT_VERSION)
+				.Variant(TJS_W("rtAccelerator"), (tTVInteger)(tjs_intptr_t)RT_ACCELERATOR)
+				.Variant(TJS_W("rtAniCursor"), (tTVInteger)(tjs_intptr_t)RT_ANICURSOR)
+				.Variant(TJS_W("rtAniIcon"), (tTVInteger)(tjs_intptr_t)RT_ANIICON)
+				.Variant(TJS_W("rtBitmap"), (tTVInteger)(tjs_intptr_t)RT_BITMAP)
+				.Variant(TJS_W("rtCursor"), (tTVInteger)(tjs_intptr_t)RT_CURSOR)
+				.Variant(TJS_W("rtDialog"), (tTVInteger)(tjs_intptr_t)RT_DIALOG)
+				.Variant(TJS_W("rtFont"), (tTVInteger)(tjs_intptr_t)RT_FONT)
+				.Variant(TJS_W("rtFontDir"), (tTVInteger)(tjs_intptr_t)RT_FONTDIR)
+				.Variant(TJS_W("rtGroupCursor"), (tTVInteger)(tjs_intptr_t)RT_GROUP_CURSOR)
+				.Variant(TJS_W("rtGroupIcon"), (tTVInteger)(tjs_intptr_t)RT_GROUP_ICON)
+				.Variant(TJS_W("rtHtml"), (tTVInteger)(tjs_intptr_t)RT_HTML)
+				.Variant(TJS_W("rtIcon"), (tTVInteger)(tjs_intptr_t)RT_ICON)
+				.Variant(TJS_W("rtMenu"), (tTVInteger)(tjs_intptr_t)RT_MENU)
+				.Variant(TJS_W("rtMessageTable"), (tTVInteger)(tjs_intptr_t)RT_MESSAGETABLE)
+				.Variant(TJS_W("rtRcData"), (tTVInteger)(tjs_intptr_t)RT_RCDATA)
+				.Variant(TJS_W("rtString"), (tTVInteger)(tjs_intptr_t)RT_STRING)
+				.Variant(TJS_W("rtVersion"), (tTVInteger)(tjs_intptr_t)RT_VERSION)
 				.IsValid()
 #ifndef RESOURCERW_NO_ICONRES
 				&& IconImage::Entry(link) && IconGroup::Entry(link) && VersionInfo::Entry(link)
@@ -249,17 +250,17 @@ public:
 		}
 		static bool Entry(bool link) {
 			return (SimpleBinder::BindUtil(link)
-					.Class(TJS_W("ResourceIconImage"), &CreateNew)
-					.Function(TJS_W("fromOctet"),    &fromOctet)
-					.Function(TJS_W("toOctet"),      &toOctet)
-					.Function(TJS_W("setID"),        &setID)
-					.Function(TJS_W("getID"),        &getID)
-					.Function(TJS_W("setImage"),     &setImage)
-					.Function(TJS_W("getImage"),     &getImage)
-					.Function(TJS_W("setHotSpot"),   &setHotSpot)
-					.Function(TJS_W("getHotSpot"),   &getHotSpot)
-					.Property(TJS_W("count"),        &getCount, 0)
-					.Property(TJS_W("isCursor"),     &getIsCursor, &setIsCursor)
+					.Class(TJS_W("ResourceIconImage"), &IconImage::CreateNew)
+					.Function(TJS_W("fromOctet"),    &IconImage::fromOctet)
+					.Function(TJS_W("toOctet"),      &IconImage::toOctet)
+					.Function(TJS_W("setID"),        &IconImage::setID)
+					.Function(TJS_W("getID"),        &IconImage::getID)
+					.Function(TJS_W("setImage"),     &IconImage::setImage)
+					.Function(TJS_W("getImage"),     &IconImage::getImage)
+					.Function(TJS_W("setHotSpot"),   &IconImage::setHotSpot)
+					.Function(TJS_W("getHotSpot"),   &IconImage::getHotSpot)
+					.Property(TJS_W("count"),        &IconImage::getCount, 0)
+					.Property(TJS_W("isCursor"),     &IconImage::getIsCursor, &IconImage::setIsCursor)
 					.IsValid());
 		}
 	};
@@ -332,11 +333,11 @@ public:
 	public:
 		static bool Entry(bool link) {
 			return (SimpleBinder::BindUtil(link)
-					.Class(TJS_W("ResourceIconGroup"), &CreateNew)
-					.Function(TJS_W("fromIcon"),  &fromIcon)
-					.Function(TJS_W("toIcon"),    &toIcon)
-					.Function(TJS_W("fromOctet"), &fromOctet)
-					.Function(TJS_W("toOctet"),   &toOctet)
+					.Class(TJS_W("ResourceIconGroup"), &IconGroup::CreateNew)
+					.Function(TJS_W("fromIcon"),  &IconGroup::fromIcon)
+					.Function(TJS_W("toIcon"),    &IconGroup::toIcon)
+					.Function(TJS_W("fromOctet"), &IconGroup::fromOctet)
+					.Function(TJS_W("toOctet"),   &IconGroup::toOctet)
 					.IsValid());
 		}
 	};
@@ -425,15 +426,15 @@ public:
 	public:
 		static bool Entry(bool link) {
 			return (SimpleBinder::BindUtil(link)
-					.Class(TJS_W("ResourceVersionInfo"), &CreateNew)
-					.Function(TJS_W("changeString"), &changeString)
-					.Function(TJS_W("changeInfo"),   &changeInfo)
-					.Function(TJS_W("getLangList"),  &getLangList)
-					.Function(TJS_W("addLang"),      &addLang)
-					.Function(TJS_W("removeLang"),   &removeLang)
-					.Function(TJS_W("copyLang"),     &copyLang)
-					.Function(TJS_W("fromOctet"),    &fromOctet)
-					.Function(TJS_W("toOctet"),      &toOctet)
+					.Class(TJS_W("ResourceVersionInfo"), &VersionInfo::CreateNew)
+					.Function(TJS_W("changeString"), &VersionInfo::changeString)
+					.Function(TJS_W("changeInfo"),   &VersionInfo::changeInfo)
+					.Function(TJS_W("getLangList"),  &VersionInfo::getLangList)
+					.Function(TJS_W("addLang"),      &VersionInfo::addLang)
+					.Function(TJS_W("removeLang"),   &VersionInfo::removeLang)
+					.Function(TJS_W("copyLang"),     &VersionInfo::copyLang)
+					.Function(TJS_W("fromOctet"),    &VersionInfo::fromOctet)
+					.Function(TJS_W("toOctet"),      &VersionInfo::toOctet)
 					.IsValid());
 		}
 	};
@@ -491,7 +492,7 @@ public:
 	 */
 	tjs_error open(tTJSVariant *r, tTJSVariant *filename, tjs_int optnum, tTJSVariant **optargs) {
 		open_(*filename, optnum>0 && optargs[0]->operator bool());
-		if (r) *r = (tjs_int)handle_;
+		if (r) *r = (tTVInteger)(tjs_intptr_t)handle_;
 		return TJS_S_OK;
 	}
 	/**
@@ -770,7 +771,7 @@ public:
 	 */
 	tjs_error open(tTJSVariant *r, tTJSVariant *filename) {
 		open_(*filename);
-		if (r) *r = (tjs_int)handle_;
+		if (r) *r = (tTVInteger)(tjs_intptr_t)handle_;
 		return TJS_S_OK;
 	}
 	/**
