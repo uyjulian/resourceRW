@@ -103,23 +103,23 @@ public:
 	static bool Entry(bool link) {
 		if (!SetupLangIdTable(link)) return true; // already link/unlinked.
 		return (SimpleBinder::BindUtil(link)
-				.Variant(TJS_W("rtAccelerator"), (tjs_int)RT_ACCELERATOR)
-				.Variant(TJS_W("rtAniCursor"), (tjs_int)RT_ANICURSOR)
-				.Variant(TJS_W("rtAniIcon"), (tjs_int)RT_ANIICON)
-				.Variant(TJS_W("rtBitmap"), (tjs_int)RT_BITMAP)
-				.Variant(TJS_W("rtCursor"), (tjs_int)RT_CURSOR)
-				.Variant(TJS_W("rtDialog"), (tjs_int)RT_DIALOG)
-				.Variant(TJS_W("rtFont"), (tjs_int)RT_FONT)
-				.Variant(TJS_W("rtFontDir"), (tjs_int)RT_FONTDIR)
-				.Variant(TJS_W("rtGroupCursor"), (tjs_int)RT_GROUP_CURSOR)
-				.Variant(TJS_W("rtGroupIcon"), (tjs_int)RT_GROUP_ICON)
-				.Variant(TJS_W("rtHtml"), (tjs_int)RT_HTML)
-				.Variant(TJS_W("rtIcon"), (tjs_int)RT_ICON)
-				.Variant(TJS_W("rtMenu"), (tjs_int)RT_MENU)
-				.Variant(TJS_W("rtMessageTable"), (tjs_int)RT_MESSAGETABLE)
-				.Variant(TJS_W("rtRcData"), (tjs_int)RT_RCDATA)
-				.Variant(TJS_W("rtString"), (tjs_int)RT_STRING)
-				.Variant(TJS_W("rtVersion"), (tjs_int)RT_VERSION)
+				.Variant(TJS_W("rtAccelerator"), (tTVInteger)(tjs_intptr_t)RT_ACCELERATOR)
+				.Variant(TJS_W("rtAniCursor"), (tTVInteger)(tjs_intptr_t)RT_ANICURSOR)
+				.Variant(TJS_W("rtAniIcon"), (tTVInteger)(tjs_intptr_t)RT_ANIICON)
+				.Variant(TJS_W("rtBitmap"), (tTVInteger)(tjs_intptr_t)RT_BITMAP)
+				.Variant(TJS_W("rtCursor"), (tTVInteger)(tjs_intptr_t)RT_CURSOR)
+				.Variant(TJS_W("rtDialog"), (tTVInteger)(tjs_intptr_t)RT_DIALOG)
+				.Variant(TJS_W("rtFont"), (tTVInteger)(tjs_intptr_t)RT_FONT)
+				.Variant(TJS_W("rtFontDir"), (tTVInteger)(tjs_intptr_t)RT_FONTDIR)
+				.Variant(TJS_W("rtGroupCursor"), (tTVInteger)(tjs_intptr_t)RT_GROUP_CURSOR)
+				.Variant(TJS_W("rtGroupIcon"), (tTVInteger)(tjs_intptr_t)RT_GROUP_ICON)
+				.Variant(TJS_W("rtHtml"), (tTVInteger)(tjs_intptr_t)RT_HTML)
+				.Variant(TJS_W("rtIcon"), (tTVInteger)(tjs_intptr_t)RT_ICON)
+				.Variant(TJS_W("rtMenu"), (tTVInteger)(tjs_intptr_t)RT_MENU)
+				.Variant(TJS_W("rtMessageTable"), (tTVInteger)(tjs_intptr_t)RT_MESSAGETABLE)
+				.Variant(TJS_W("rtRcData"), (tTVInteger)(tjs_intptr_t)RT_RCDATA)
+				.Variant(TJS_W("rtString"), (tTVInteger)(tjs_intptr_t)RT_STRING)
+				.Variant(TJS_W("rtVersion"), (tTVInteger)(tjs_intptr_t)RT_VERSION)
 				.IsValid()
 #ifndef RESOURCERW_NO_ICONRES
 				&& IconImage::Entry(link) && IconGroup::Entry(link) && VersionInfo::Entry(link)
@@ -491,7 +491,7 @@ public:
 	 */
 	tjs_error open(tTJSVariant *r, tTJSVariant *filename, tjs_int optnum, tTJSVariant **optargs) {
 		open_(*filename, optnum>0 && optargs[0]->operator bool());
-		if (r) *r = (tjs_int)handle_;
+		if (r) *r = (tTVInteger)(tjs_intptr_t)handle_;
 		return TJS_S_OK;
 	}
 	/**
@@ -770,7 +770,7 @@ public:
 	 */
 	tjs_error open(tTJSVariant *r, tTJSVariant *filename) {
 		open_(*filename);
-		if (r) *r = (tjs_int)handle_;
+		if (r) *r = (tTVInteger)(tjs_intptr_t)handle_;
 		return TJS_S_OK;
 	}
 	/**
