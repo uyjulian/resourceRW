@@ -286,9 +286,9 @@ public:
 			Entry *ent = &entries_.back();
 			ICONHDR hdr = {0};
 			if ((*it)(hdr, ent->image, &ent->id)) {
-				memcpy(&ent->ih, &hdr, sizeof(hdr));
-				ent->dwBytesInRes = ent->image.size();
-				ent->dwImageOffset = 0;
+				memcpy(&ent->icon.ih, &hdr, sizeof(hdr));
+				ent->icon.dwBytesInRes = ent->image.size();
+				ent->icon.dwImageOffset = 0;
 			} else {
 				clear();
 				return false;
