@@ -249,17 +249,17 @@ public:
 		}
 		static bool Entry(bool link) {
 			return (SimpleBinder::BindUtil(link)
-					.Class(TJS_W("ResourceIconImage"), &CreateNew)
-					.Function(TJS_W("fromOctet"),    &fromOctet)
-					.Function(TJS_W("toOctet"),      &toOctet)
-					.Function(TJS_W("setID"),        &setID)
-					.Function(TJS_W("getID"),        &getID)
-					.Function(TJS_W("setImage"),     &setImage)
-					.Function(TJS_W("getImage"),     &getImage)
-					.Function(TJS_W("setHotSpot"),   &setHotSpot)
-					.Function(TJS_W("getHotSpot"),   &getHotSpot)
-					.Property(TJS_W("count"),        &getCount, 0)
-					.Property(TJS_W("isCursor"),     &getIsCursor, &setIsCursor)
+					.Class(TJS_W("ResourceIconImage"), &IconImage::CreateNew)
+					.Function(TJS_W("fromOctet"),    &IconImage::fromOctet)
+					.Function(TJS_W("toOctet"),      &IconImage::toOctet)
+					.Function(TJS_W("setID"),        &IconImage::setID)
+					.Function(TJS_W("getID"),        &IconImage::getID)
+					.Function(TJS_W("setImage"),     &IconImage::setImage)
+					.Function(TJS_W("getImage"),     &IconImage::getImage)
+					.Function(TJS_W("setHotSpot"),   &IconImage::setHotSpot)
+					.Function(TJS_W("getHotSpot"),   &IconImage::getHotSpot)
+					.Property(TJS_W("count"),        &IconImage::getCount, 0)
+					.Property(TJS_W("isCursor"),     &IconImage::getIsCursor, &IconImage::setIsCursor)
 					.IsValid());
 		}
 	};
@@ -332,11 +332,11 @@ public:
 	public:
 		static bool Entry(bool link) {
 			return (SimpleBinder::BindUtil(link)
-					.Class(TJS_W("ResourceIconGroup"), &CreateNew)
-					.Function(TJS_W("fromIcon"),  &fromIcon)
-					.Function(TJS_W("toIcon"),    &toIcon)
-					.Function(TJS_W("fromOctet"), &fromOctet)
-					.Function(TJS_W("toOctet"),   &toOctet)
+					.Class(TJS_W("ResourceIconGroup"), &IconGroup::CreateNew)
+					.Function(TJS_W("fromIcon"),  &IconGroup::fromIcon)
+					.Function(TJS_W("toIcon"),    &IconGroup::toIcon)
+					.Function(TJS_W("fromOctet"), &IconGroup::fromOctet)
+					.Function(TJS_W("toOctet"),   &IconGroup::toOctet)
 					.IsValid());
 		}
 	};
@@ -425,15 +425,15 @@ public:
 	public:
 		static bool Entry(bool link) {
 			return (SimpleBinder::BindUtil(link)
-					.Class(TJS_W("ResourceVersionInfo"), &CreateNew)
-					.Function(TJS_W("changeString"), &changeString)
-					.Function(TJS_W("changeInfo"),   &changeInfo)
-					.Function(TJS_W("getLangList"),  &getLangList)
-					.Function(TJS_W("addLang"),      &addLang)
-					.Function(TJS_W("removeLang"),   &removeLang)
-					.Function(TJS_W("copyLang"),     &copyLang)
-					.Function(TJS_W("fromOctet"),    &fromOctet)
-					.Function(TJS_W("toOctet"),      &toOctet)
+					.Class(TJS_W("ResourceVersionInfo"), &VersionInfo::CreateNew)
+					.Function(TJS_W("changeString"), &VersionInfo::changeString)
+					.Function(TJS_W("changeInfo"),   &VersionInfo::changeInfo)
+					.Function(TJS_W("getLangList"),  &VersionInfo::getLangList)
+					.Function(TJS_W("addLang"),      &VersionInfo::addLang)
+					.Function(TJS_W("removeLang"),   &VersionInfo::removeLang)
+					.Function(TJS_W("copyLang"),     &VersionInfo::copyLang)
+					.Function(TJS_W("fromOctet"),    &VersionInfo::fromOctet)
+					.Function(TJS_W("toOctet"),      &VersionInfo::toOctet)
 					.IsValid());
 		}
 	};
